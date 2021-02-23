@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+.container {
+  height: 100%;
+  font-size: medium;
+}
+
+.container {
+  --table-line-width: 0.2rem;
+  --table-line-color: #494949;
+  --table-color: #0d0d0d;
+
+  --racket-width: 0.4rem;
+  --racket-height: 5rem;
+  --racket-color: #3598c2;
+  --racket-back-spacing: 0.7rem;
+  --racket-shadow-size: 1.3rem;
+
+  --ball-color: #e84d1c;
+  --ball-size: 1rem;
+  --ball-shadow-size: 1.1rem;
+
+  --score-size: 1.5rem;
+  --score-color: #8d8d8d;
+  --score-margin-top: 0.7rem;
+  --score-margin-horizontal: 1.2rem;
+  position: relative;
+}
+
+.container .table {
+  height: 100%;
+  padding: var(--table-line-width);
+  background-color: var(--table-line-color);
+  display: flex;
+  flex-direction: row;
+}
+
+.container .table > * {
+  background-color: var(--table-color);
+  flex: 1;
+  position: relative;
+}
+
+.container .table .left {
+  margin-right: var(--table-line-width);
+}
+
+.container .table .racket {
+  width: var(--racket-width);
+  height: var(--racket-height);
+  background-color: var(--racket-color);
+  position: absolute;
+  box-shadow: 0 0 var(--racket-shadow-size) var(--racket-color);
+}
+
+.container .table .left .racket {
+  --racket-position: 0.5;
+
+  left: var(--racket-back-spacing);
+  bottom: calc((100% - var(--racket-height)) * var(--racket-position));
+}
+
+.container .table .right .racket {
+  --racket-position: 0.5;
+
+  right: var(--racket-back-spacing);
+  bottom: calc((100% - var(--racket-height)) * var(--racket-position));
+}
+
+.container .table .score {
+  font-size: var(--score-size);
+  font-family: sans-serif;
+  color: var(--score-color);
+  margin: var(--score-margin-top) var(--score-margin-horizontal) 0;
+}
+
+.container .table .left .score {
+  text-align: right;
+}
+
+.container .ball {
+  --position-x: 0.5;
+  --position-y: 0.5;
+
+  position: absolute;
+  left: calc((100% - var(--ball-size)) * var(--position-x));
+  bottom: calc((100% - var(--ball-size)) * var(--position-y));
+  width: var(--ball-size);
+  height: var(--ball-size);
+  background-color: var(--ball-color);
+  border-radius: 50%;
+  box-shadow: 0 0 var(--ball-shadow-size) var(--ball-color);
+}
